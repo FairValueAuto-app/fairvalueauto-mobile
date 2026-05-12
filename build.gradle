@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace "app.fairvalueauto"
+    compileSdk 34
+    defaultConfig {
+        applicationId "app.fairvalueauto"
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+            ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    signingConfigs {
+        release {
+            keyAlias System.getenv("KEY_ALIAS") ?: "fairvalueauto"
+            keyPassword System.getenv("KEY_PASSWORD") ?: ""
+            storeFile System.getenv("STORE_FILE") ? file(System.getenv("STORE_FILE")) : null
+            storePassword System.getenv("STORE_PASSWORD") ?: ""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.2.0"
+    implementation project(':capacitor-android')
+    implementation "com.capacitorjs.plugins.app:app:6.0.0"
+    implementation "com.capacitorjs.plugins.splashscreen:splashscreen:6.0.0"
+    implementation "com.capacitorjs.plugins.statusbar:statusbar:6.0.0"
+    implementation "com.capacitorjs.plugins.keyboard:keyboard:6.0.0"
+    implementation "com.capacitorjs.plugins.pushnotifications:push-notifications:6.0.0"
+    implementation "com.capacitorjs.plugins.haptics:haptics:6.0.0"
+}

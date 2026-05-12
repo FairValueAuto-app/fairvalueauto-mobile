@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Capacitor generated (re-run npx cap add to regenerate)
+# Keep android/ and ios/ if you want to commit native projects
+# Uncomment below to ignore:
+# ios/
+# android/
+
+# Build outputs
+android/app/build/
+ios/App/DerivedData/
+*.apk
+*.ipa
+*.aab
+
+# Signing keys (NEVER commit these)
+*.jks
+*.keystore
+*.p12
+*.mobileprovision
+
+# Environment
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
